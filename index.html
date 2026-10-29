@@ -120,7 +120,6 @@
             color: var(--accent-red);
         }
 
-        /* About Me / Hero */
         #about {
             display: flex;
             align-items: center;
@@ -162,7 +161,7 @@
         }
 
         .about-content h2 {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             color: var(--accent-green);
             margin-bottom: 1.5rem;
             font-weight: 500;
@@ -190,6 +189,17 @@
         .btn:hover {
             background-color: #0ea5e9;
             box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--accent-green);
+            color: var(--accent-green);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--accent-green);
+            color: var(--bg-main);
         }
 
         .timeline {
@@ -267,6 +277,8 @@
             padding: 2rem;
             border-radius: 8px;
             transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
         }
 
         .project-card:hover {
@@ -292,7 +304,7 @@
 
         .drive-link {
             display: inline-block;
-            margin-top: 1.5rem;
+            margin-top: auto;
             padding: 0.5rem 1rem;
             background-color: transparent;
             border: 1px solid var(--accent-green);
@@ -366,6 +378,140 @@
             text-decoration: none;
         }
 
+        /* DASHBOARD STYLES (Meniru Referensi Gambar) */
+        .dashboard-wrapper {
+            background-color: var(--bg-card);
+            border-radius: 12px;
+            padding: 2rem;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .db-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .db-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .kpi-card-db {
+            background-color: var(--bg-main);
+            padding: 1.25rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+        .kpi-top {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 0.75rem;
+        }
+        .kpi-value-db {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
+        }
+        .kpi-bottom {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+        .trend-green { color: var(--accent-green); background: rgba(16, 185, 129, 0.1); padding: 2px 6px; border-radius: 4px; font-weight: bold;}
+        .trend-blue { color: #3b82f6; background: rgba(59, 130, 246, 0.1); padding: 2px 6px; border-radius: 4px; font-weight: bold;}
+
+        .db-charts-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 1rem;
+        }
+        .db-box {
+            background-color: var(--bg-main);
+            padding: 1.25rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+        .db-box-title {
+            font-size: 0.95rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            color: var(--text-main);
+        }
+        
+        /* CSS Bar Chart */
+        .bar-chart-wrapper {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+            height: 180px;
+            padding-bottom: 25px;
+            position: relative;
+            border-bottom: 1px solid var(--border-color);
+            margin-top: 2rem;
+        }
+        .bar-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            width: 45px;
+            height: 100%;
+            position: relative;
+        }
+        .bar-fill {
+            width: 100%;
+            border-radius: 4px 4px 0 0;
+        }
+        .bar-val {
+            position: absolute;
+            top: -22px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        .bar-lbl {
+            position: absolute;
+            bottom: -25px;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            white-space: nowrap;
+        }
+
+        /* List Rows */
+        .db-list-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .db-list-item:last-child { border-bottom: none; padding-bottom: 0; }
+        .db-list-label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+        }
+        .db-list-val {
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
         @media (max-width: 768px) {
             #about {
                 flex-direction: column;
@@ -379,6 +525,7 @@
                 flex-direction: column;
                 gap: 0.5rem;
             }
+            .db-charts-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -391,10 +538,10 @@
                 <li><a href="#about">Tentang saya</a></li>
                 <li><a href="#pendidikan">Pendidikan</a></li>
                 <li><a href="#pengalaman">Pengalaman</a></li>
+                <li><a href="#metrik">Pencapaian</a></li>
                 <li><a href="#projek">Projek</a></li>
                 <li><a href="#sertifikat">Sertifikat</a></li>
                 <li><a href="#skill">Skill</a></li>
-                <li><a href="#hubungi">Hubungi</a></li>
             </ul>
         </div>
     </nav>
@@ -406,9 +553,14 @@
             </div>
             <div class="about-content">
                 <h1>Mazmur Siagian</h1>
-                <h2>Event, Floral Design & Operasional Bisnis</h2>
+                <h2>Digital Business Student | Event, Floral Design & Operasional Bisnis</h2>
                 <p>Saya adalah orang yang terbiasa bekerja di lapangan dengan ritme yang cepat dan dinamis. Selama beberapa tahun terakhir, saya banyak mengumpulkan pengalaman di berbagai bidang operasional—mulai dari menangani puluhan pesanan di dapur F&B, mengurus logistik <i>online shop</i>, merangkai bunga, hingga ikut serta mengatur jalannya sebuah <i>event</i>. <br><br>Walaupun peran yang saya kerjakan selalu berbeda-beda, cara kerja saya tetap sama: praktis, cepat beradaptasi, dan teliti pada detail. Saat ini saya sedang menempuh kuliah <i>Business Digital</i> untuk menyeimbangkan kemampuan lapangan saya dengan strategi pemasaran. Saya terbiasa menghadapi jadwal yang ketat dan selalu memastikan pekerjaan selesai tepat waktu.</p>
-                <a href="#hubungi" class="btn"><i class="fas fa-envelope"></i> Hubungi Saya</a>
+                
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem;">
+                    <a href="https://drive.google.com/file/d/1JjC2qS6yiuYMip7MzlOHRhTCwKzunwW-/view?usp=sharing" target="_blank" class="btn"><i class="fas fa-file-pdf"></i> Unduh CV</a>
+                    <a href="#skill" class="btn btn-outline"><i class="fas fa-tools"></i> Skill</a>
+                    <a href="#sertifikat" class="btn btn-outline"><i class="fas fa-certificate"></i> Sertifikat</a>
+                </div>
             </div>
         </section>
 
@@ -515,35 +667,127 @@
 
             </div>
         </section>
+
+        <section id="metrik">
+            <h2 class="section-title"><span>03.</span> Metrik & Pencapaian Operasional</h2>
+            
+            <div class="dashboard-wrapper">
+                <div class="db-header">
+                    <div class="db-title"><i class="fas fa-chart-pie" style="color: var(--accent-green);"></i> Operational Growth Dashboard</div>
+                    <div style="font-size: 0.85rem; color: var(--text-muted);"><i class="far fa-calendar-alt"></i> Studi Kasus (2020 - 2024)</div>
+                </div>
+
+                <div class="kpi-grid">
+                    <div class="kpi-card-db">
+                        <div class="kpi-top">Target Penjualan <i class="fas fa-arrow-right"></i></div>
+                        <div class="kpi-value-db">Rp 40Jt<span style="font-size:1rem; color:var(--text-muted)">/bln</span></div>
+                        <div class="kpi-bottom">LSO <span class="trend-green"><i class="fas fa-caret-up"></i> 30-50 Juta</span></div>
+                    </div>
+                    <div class="kpi-card-db">
+                        <div class="kpi-top">Volume Pesanan <i class="fas fa-arrow-right"></i></div>
+                        <div class="kpi-value-db">100<span style="font-size:1rem; color:var(--text-muted)"> order</span></div>
+                        <div class="kpi-bottom">LSO & UENA <span class="trend-blue"><i class="fas fa-caret-up"></i> Per hari/shift</span></div>
+                    </div>
+                    <div class="kpi-card-db">
+                        <div class="kpi-top">Akurasi Pesanan <i class="fas fa-arrow-right"></i></div>
+                        <div class="kpi-value-db">98.0%</div>
+                        <div class="kpi-bottom">Online Shop <span class="trend-green"><i class="fas fa-check"></i> Konsisten</span></div>
+                    </div>
+                    <div class="kpi-card-db">
+                        <div class="kpi-top">Kenaikan Sales <i class="fas fa-arrow-right"></i></div>
+                        <div class="kpi-value-db">+15%</div>
+                        <div class="kpi-bottom">UENA <span class="trend-blue"><i class="fas fa-caret-up"></i> via Upselling</span></div>
+                    </div>
+                </div>
+
+                <div class="db-charts-grid">
+
+                    <div class="db-box">
+                        <div class="db-box-title">Performance Overview (Kualitas Layanan)</div>
+                        <div class="bar-chart-wrapper">
+                            <div class="bar-item">
+                                <div class="bar-val" style="color: #3b82f6;">98%</div>
+                                <div class="bar-fill" style="height: 98%; background-color: #3b82f6;"></div>
+                                <div class="bar-lbl">Akurasi LSO</div>
+                            </div>
+                            <div class="bar-item">
+                                <div class="bar-val" style="color: #10b981;">95%</div>
+                                <div class="bar-fill" style="height: 95%; background-color: #10b981;"></div>
+                                <div class="bar-lbl">Waktu UENA</div>
+                            </div>
+                            <div class="bar-item">
+                                <div class="bar-val" style="color: #f59e0b;">95%</div>
+                                <div class="bar-fill" style="height: 95%; background-color: #f59e0b;"></div>
+                                <div class="bar-lbl">Efisiensi Food</div>
+                            </div>
+                            <div class="bar-item">
+                                <div class="bar-val" style="color: #8b5cf6;">100%</div>
+                                <div class="bar-fill" style="height: 100%; background-color: #8b5cf6;"></div>
+                                <div class="bar-lbl">Target Order</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="db-box">
+                        <div class="db-box-title">What's Working</div>
+                        
+                        <div class="db-list-item">
+                            <div class="db-list-label"><i class="fas fa-plus-circle" style="color: #3b82f6;"></i> Akurasi LSO</div>
+                            <div class="db-list-val">98% <span style="color:var(--accent-green); font-size:0.75rem;"><i class="fas fa-caret-up"></i></span></div>
+                        </div>
+                        <div class="db-list-item">
+                            <div class="db-list-label"><i class="fas fa-plus-circle" style="color: #10b981;"></i> Waktu UENA</div>
+                            <div class="db-list-val">95% <span style="color:var(--accent-green); font-size:0.75rem;"><i class="fas fa-caret-up"></i></span></div>
+                        </div>
+                        <div class="db-list-item">
+                            <div class="db-list-label"><i class="fas fa-plus-circle" style="color: #f59e0b;"></i> Upselling UENA</div>
+                            <div class="db-list-val">+15% <span style="color:var(--accent-green); font-size:0.75rem;"><i class="fas fa-caret-up"></i></span></div>
+                        </div>
+                        <div class="db-list-item" style="margin-top: 1rem; border-top: 1px dashed var(--border-color); padding-top: 1rem;">
+                            <div class="db-list-label" style="color: var(--text-muted);">Food Waste Control</div>
+                            <div class="db-list-val" style="color: var(--accent-green);">3-5%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
         
         <section id="projek">
-            <h2 class="section-title"><span>03.</span> Project Bidang</h2>
+            <h2 class="section-title"><span>04.</span> Project Bidang</h2>
             <div class="project-grid">
+                
                 <div class="project-card">
-                    <i class="fas fa-calendar-check project-icon"></i>
-                    <h3 style="color: var(--text-main); margin-bottom: 1rem;">Manajemen Acara & Dekorasi</h3>
-                    <p style="color: var(--text-muted); font-size: 0.95rem;">Perancangan tema, pembuatan rundown acara, hingga eksekusi dekorasi skala besar untuk kepuasan klien.</p>
+                    <i class="fas fa-calendar-star project-icon"></i>
+                    <h3 style="color: var(--text-main); margin-bottom: 0.5rem;">K2 Graduation: Core Memories</h3>
+                    <p style="color: var(--accent-green); font-size: 0.9rem; margin-bottom: 1rem;">Mentari Preschool × Orchidpilago</p>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;">Manajemen event perpisahan TK yang melibatkan koordinasi 17+ kru, pengaturan rundown (Fashion Show, Singing), dan pengelolaan visual di venue.</p>
+                    <a href="https://drive.google.com/file/d/1UIzwULik3duQIu3KcWDQ1tmhyZ3eFTzu/view?usp=sharing" target="_blank" class="drive-link"><i class="fab fa-google-drive"></i> Lihat Detail Project</a>
                 </div>
+
                 <div class="project-card">
                     <i class="fas fa-leaf project-icon"></i>
-                    <h3 style="color: var(--text-main); margin-bottom: 1rem;">Desain Floral Profesional</h3>
-                    <p style="color: var(--text-muted); font-size: 0.95rem;">Merangkai buket, flower box, dan vas dengan nilai estetika tinggi serta manajemen stok bunga.</p>
+                    <h3 style="color: var(--text-main); margin-bottom: 0.5rem;">Meaningful September</h3>
+                    <p style="color: var(--accent-green); font-size: 0.9rem; margin-bottom: 1rem;">Program bersama TisiKasa & Pundii</p>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;">Program interaktif anak dalam simulasi market (Create to Earn) dengan membuat karya floristik mandiri dan meningkatkan kesadaran lingkungan.</p>
+                    <a href="https://drive.google.com/file/d/1KbOg9e1P2gzK5K0NktTDwWmcNObd1uZQ/view?usp=sharing" target="_blank" class="drive-link"><i class="fab fa-google-drive"></i> Lihat Detail Project</a>
                 </div>
+
                 <div class="project-card">
                     <i class="fas fa-chart-line project-icon"></i>
-                    <h3 style="color: var(--text-main); margin-bottom: 1rem;">Digital Ads Campaign</h3>
-                    <p style="color: var(--text-muted); font-size: 0.95rem;">Pengelolaan Meta Ads & Google Ads untuk promosi event kampus dan penerimaan mahasiswa.</p>
+                    <h3 style="color: var(--text-main); margin-bottom: 0.5rem;">Digital Ads Campaign</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1rem;">Pengelolaan Meta Ads & Google Ads untuk promosi event kampus dan penerimaan mahasiswa baru.</p>
                 </div>
+                
                 <div class="project-card">
                     <i class="fas fa-boxes-packing project-icon"></i>
-                    <h3 style="color: var(--text-main); margin-bottom: 1rem;">Fulfillment & Operasional</h3>
-                    <p style="color: var(--text-muted); font-size: 0.95rem;">Pemrosesan 100+ order per hari di F&B dan Online Shop dengan KPI akurasi pesanan 98%.</p>
+                    <h3 style="color: var(--text-main); margin-bottom: 0.5rem;">Fulfillment & Operasional</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1rem;">Pemrosesan ratusan order harian di ranah F&B dan Logistik dengan KPI akurasi tinggi tanpa penundaan.</p>
                 </div>
             </div>
         </section>
 
         <section id="sertifikat">
-            <h2 class="section-title"><span>04.</span> Sertifikat & Penghargaan</h2>
+            <h2 class="section-title"><span>05.</span> Sertifikat & Penghargaan</h2>
             <div class="project-grid">
                 
                 <div class="sertifikat-card">
@@ -577,7 +821,7 @@
         </section>
 
         <section id="skill">
-            <h2 class="section-title"><span>05.</span> Skill & Keahlian</h2>
+            <h2 class="section-title"><span>06.</span> Skill & Keahlian</h2>
             <div class="skills-container">
                 <div class="skill-tag"><i class="fas fa-clipboard-check"></i> Event & Koordinasi</div>
                 <div class="skill-tag"><i class="fas fa-seedling"></i> Floral Design (Buket & Dekorasi)</div>
@@ -593,7 +837,7 @@
         </section>
 
         <section id="hubungi">
-            <h2 class="section-title"><span>06.</span> Hubungi Saya</h2>
+            <h2 class="section-title"><span>07.</span> Hubungi Saya</h2>
             <p style="color: var(--text-muted); margin-bottom: 2rem; font-size: 1.1rem;">
                 Tepat waktu, teliti pada detail, dan mampu berpindah peran dengan cepat. Saya siap berkontribusi di posisi operasional maupun kreatif. Mari terhubung.
             </p>
